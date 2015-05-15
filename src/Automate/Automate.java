@@ -25,9 +25,23 @@ public class Automate {
 
     public boolean accepte(String mot) {
         Etat etat_courant = ensemble_etats.get(0);
+        String[] alphabet = alphabet();
         int caract_courant = 0;
         int nouvel_etat;
         while (caract_courant != mot.length()) {
+            if (mot.charAt(caract_courant) == '#') {
+                String[] mots_substitues = new String[alphabet.length];
+                for (int i = 0; i < alphabet.length; i++) {
+                    String tmp = mot;
+                    tmp = substitution(tmp, caract_courant, alphabet[i]);
+                    mots_substitues[i] = tmp;
+                }
+                boolean test = true;
+                for(int i=0; i<mots_substitues.length; i++){
+                    test = test && accepte(mots_substitues[i]);
+                }
+                return test;
+            }
             if (!existeTransition(etat_courant, mot.charAt(caract_courant) + "")) {
                 return false;
             }
@@ -96,7 +110,7 @@ public class Automate {
                 etats += ensemble_etats.get(i) + "}";
             }
             if (ensemble_etats.get(i).estFinal) {
-                if (finaux_ecrits != nb_finaux-1) {
+                if (finaux_ecrits != nb_finaux - 1) {
                     finaux += ensemble_etats.get(i) + ",";
                     finaux_ecrits++;
                 } else {
@@ -151,4 +165,10 @@ public class Automate {
         }
     }
 
+    private String substitution(String chaine, int idx, String monCharRempl) {
+        char[] tab = chaine.toCharArray();
+        char c = monCharRempl.charAt(0);
+        tab[idx] = c;
+        return String.valueOf(tab);
+    }
 }
