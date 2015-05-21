@@ -10,16 +10,16 @@ package Automate;
  * @author Maxime
  */
 public class Etat {
-    int num_etat;
+    String nom_etat;
     boolean estFinal;
     
-    public Etat (int num_etat, boolean estFinal){
-        this.num_etat = num_etat;
+    public Etat (String nom_etat, boolean estFinal){
+        this.nom_etat = nom_etat;
         this.estFinal = estFinal;
     }
     
-    public Etat (int num_etat){
-        this(num_etat,false);
+    public Etat (String nom_etat){
+        this(nom_etat,false);
     }
     
     public boolean estFinal(){
@@ -27,6 +27,6 @@ public class Etat {
     }
     
     public String toString(){
-        return "q"+num_etat;
+        return nom_etat;
     }
 }

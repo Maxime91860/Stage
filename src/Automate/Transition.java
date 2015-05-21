@@ -10,11 +10,11 @@ package Automate;
  * @author Maxime
  */
 public class Transition {
-    int etat_courant;
+    Etat etat_courant;
     String caractere_lu;
-    int etat_suivant;
+    Etat etat_suivant;
     
-    public Transition (int e1, String c, int e2){
+    public Transition (Etat e1, String c, Etat e2){
         etat_courant = e1;
         caractere_lu = c;
         etat_suivant = e2;
@@ -22,9 +22,9 @@ public class Transition {
     
     
     public String toString(){
-        if(etat_suivant != -1)
-            return "d(q"+etat_courant+","+caractere_lu+") = q"+etat_suivant;
-        return "d(q"+etat_courant+","+caractere_lu+") = vide";
+        //if(etat_suivant != null)
+            return "d("+etat_courant+","+caractere_lu+") = "+etat_suivant;
+        //return "d(q"+etat_courant.num_etat+","+caractere_lu+") = vide";
     }
     
     public boolean equals (Transition t){
