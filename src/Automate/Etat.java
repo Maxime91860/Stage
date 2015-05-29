@@ -29,4 +29,18 @@ public class Etat {
     public String toString(){
         return nom_etat;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        if(o==null || !(o instanceof Etat))
+            return false;
+        
+        Etat e = (Etat)o;
+        if(e.estFinal != estFinal)
+            return false;
+        if(!e.nom_etat.equals(nom_etat))
+            return false;
+        
+        return true;
+    }
 }
