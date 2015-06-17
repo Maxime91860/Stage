@@ -31,10 +31,12 @@ public class Test {
 
         System.out.println("M.estDeterministe() = " + M.estDeterministe() + "\n");
 
+        /*
         System.out.println("M.estComplet() = " + M.estComplet() + "\n");
         M.completer();
         System.out.println(M);
         System.out.println("M.estComplet() = " + M.estComplet() + "\n");
+        //*/
 
         Automate M2 = new Automate();
         Etat q3 = new Etat("q3");
